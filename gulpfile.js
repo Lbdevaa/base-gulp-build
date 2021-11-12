@@ -18,11 +18,17 @@ function setMode(isProduction = false) {
   }
 }
 
+function html() {
+  // return src('./src/*.html')
+  return gulp.src('./src/pages/*.html')
+    .pipe(gulp.dest('build'))
+}
+
 const dev = gulp.parallel(pug2html, styles, script, fonts, imageMinify, svgSprite)
 
 const build = gulp.series(clean, copyDependencies, dev)
 
-module.exports.start = gulp.series(setMode(), build, serve)
-module.exports.build = gulp.series(setMode(true), build)
+module.exports.start = gulp.series(setMode(), build, serve, html)
+module.exports.build = gulp.series(setMode(true), build, html)
 
 module.exports.lighthouse = gulp.series(lighthouse)
