@@ -1,9 +1,19 @@
 const burger = document.querySelector(`.burger`)
-const navMobile = document.querySelector(`.nav__list`)
-burger.addEventListener(`click`, function () {
-    burger.classList.toggle(`burger--active`)
-    navMobile.classList.toggle(`nav__list--opened`)
-})
-document.querySelectorAll(`.phone`).forEach((phone) => {
-    phone.setAttribute(`href`, `tel:+${phone.innerHTML.match(/\d/g).join(``)}`)
-})
+const nav = document.querySelector(`.header__nav-box`)
+
+if (burger) {
+    burger.addEventListener(`click`, burgerHandler)
+}
+
+function burgerHandler() {
+    burger.classList.toggle(`active`)
+    nav.classList.toggle(`active`)
+}
+
+function phoneGoodLook() {
+    document.querySelectorAll(`.phone-serial`).forEach((phone) => {
+        phone.setAttribute(`href`, `tel:+${phone.innerHTML.match(/\d/g).join(``)}`)
+    })
+}
+
+phoneGoodLook();
