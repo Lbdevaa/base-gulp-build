@@ -1,3 +1,9 @@
+import $ from '../local_modules/jquery/dist/jquery.min'
+$(document).ready(() => {
+    // eslint-disable-next-line no-console
+    console.log(`document ready`)
+})
+
 const burger = document.querySelector(`.burger`)
 const nav = document.querySelector(`.header__nav-box`)
 
@@ -16,4 +22,5 @@ function phoneGoodLook() {
     })
 }
 
-phoneGoodLook();
+phoneGoodLook()
+
