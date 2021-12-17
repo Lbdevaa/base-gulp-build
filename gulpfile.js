@@ -2,8 +2,10 @@ const gulp = require('gulp')
 
 const serve = require('./gulp/tasks/serve')
 const pug2html = require('./gulp/tasks/pug2html')
+const addHtml = require('./gulp/tasks/addHtml')
 const styles = require('./gulp/tasks/styles')
 const script = require('./gulp/tasks/script')
+const libs = require('./gulp/tasks/libs')
 const fonts = require('./gulp/tasks/fonts')
 const imageMinify = require('./gulp/tasks/imageMinify')
 const clean = require('./gulp/tasks/clean')
@@ -24,7 +26,7 @@ function html() {
     .pipe(gulp.dest('build'))
 }
 
-const dev = gulp.parallel(pug2html, styles, script, fonts, imageMinify, svgSprite)
+const dev = gulp.parallel(addHtml, pug2html, styles, script, libs, fonts, imageMinify, svgSprite)
 
 const build = gulp.series(clean, copyDependencies, dev)
 

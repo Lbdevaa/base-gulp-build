@@ -36,9 +36,3 @@ module.exports = function script() {
     }))
     .pipe(gulp.dest('build/js'))
 }
-
-// more odd libs
-module.exports = function libs() {
-  return gulp.src('src/libs/**/*')
-    .pipe(gulp.dest('build/libs'))
-}
