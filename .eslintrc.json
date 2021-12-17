@@ -4,7 +4,10 @@
   },
   "overrides": [
     {
-      "files": [ "src/**/*.js" ],
+      "files": [
+        // "src/**/*.js"
+        "src/js*/*.js"
+      ],
       "extends": [
         "standard",
         "htmlacademy/es6"
