@@ -6,6 +6,7 @@
   "scripts": {
     "start": "gulp start",
     "build": "gulp build",
+    "prebuild": "gulp prebuild",
     "lighthouse": "gulp build && gulp lighthouse",
     "test": "editorconfig-cli & stylelint ./src/styles/**/*.scss --syntax scss & eslint ./src/js",
     "stylelint-fix": "stylelint ./src/styles/**/*.scss --fix --syntax scss",
@@ -75,7 +76,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test && npm run build"
+      "pre-commit": "npm run test && npm run prebuild"
     }
   }
 }

@@ -20,17 +20,13 @@ function setMode(isProduction = false) {
   }
 }
 
-function html() {
-  // return src('./src/*.html')
-  return gulp.src('./src/pages/*.html')
-    .pipe(gulp.dest('build'))
-}
-
 const dev = gulp.parallel(addHtml, pug2html, styles, script, libs, fonts, imageMinify, svgSprite)
 
 const build = gulp.series(clean, copyDependencies, dev)
+const prebuild = gulp.series(clean, copyDependencies, gulp.parallel(pug2html, styles, script))
 
-module.exports.start = gulp.series(setMode(), build, serve, html)
-module.exports.build = gulp.series(setMode(true), build, html)
+module.exports.start = gulp.series(setMode(), build, serve)
+module.exports.build = gulp.series(setMode(true), build)
+module.exports.prebuild = gulp.series(setMode(true), prebuild)
 
 module.exports.lighthouse = gulp.series(lighthouse)
