@@ -2,7 +2,7 @@ const {
   src
 } = require('gulp');
 const ftp = require('vinyl-ftp');
-const ftpSettings = require('../tasks/ftp_settings');
+const ftpSettings = require('../tasks/ftpSettings');
 const chalk = require('chalk');
 const connect = ftp.create(ftpSettings);
 
