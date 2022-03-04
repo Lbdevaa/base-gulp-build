@@ -12,5 +12,7 @@ Thumbs.db
 node_modules/
 reports/
 
+gulp/tasks/ftp_settings.json
+
 # Папка с собранными файлами проекта
 build/

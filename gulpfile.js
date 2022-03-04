@@ -12,6 +12,7 @@ const clean = require('./gulp/tasks/clean')
 const copyDependencies = require('./gulp/tasks/copyDependencies')
 const lighthouse = require('./gulp/tasks/lighthouse')
 const svgSprite = require('./gulp/tasks/svgSprite')
+const deploy = require('./gulp/tasks/deploy')
 
 function setMode(isProduction = false) {
   return cb => {
@@ -23,10 +24,11 @@ function setMode(isProduction = false) {
 const dev = gulp.parallel(addHtml, pug2html, styles, script, libs, fonts, imageMinify, svgSprite)
 
 const build = gulp.series(clean, copyDependencies, dev)
-const prebuild = gulp.series(clean, copyDependencies, gulp.parallel(pug2html, styles, script))
+const prebuild = gulp.parallel(pug2html, styles, script)
 
 module.exports.start = gulp.series(setMode(), build, serve)
 module.exports.build = gulp.series(setMode(true), build)
 module.exports.prebuild = gulp.series(setMode(true), prebuild)
+module.exports.ftp = gulp.series(setMode(true), deploy)
 
 module.exports.lighthouse = gulp.series(lighthouse)
