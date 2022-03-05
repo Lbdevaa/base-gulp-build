@@ -18,7 +18,6 @@ module.exports = function imageMinify() {
         ]
       })
     ]))
-    // 
     .pipe(gulp.dest('build/img'))
 }
 

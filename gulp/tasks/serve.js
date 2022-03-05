@@ -7,6 +7,7 @@ const pug2html = require('./pug2html')
 const addHtml = require('./addHtml')
 const script = require('./script')
 const libs = require('./libs')
+const webp = require('./webp')
 const copyDependencies = require('./copyDependencies')
 
 const server = require('browser-sync').create()
@@ -24,7 +25,8 @@ module.exports = function serve(cb) {
     cors: true
   })
 
-  gulp.watch('src/img/*.{gif,png,jpg,svg,webp}', gulp.series(imageMinify, readyReload))
+  gulp.watch('src/img/*.{gif,png,jpeg,jpg,svg,webp,ico}', gulp.series(imageMinify, readyReload))
+  gulp.watch('build/img/**/*.+(png|jpg|jpeg)', gulp.series(webp, readyReload));
   gulp.watch('src/img/sprite/*.svg', gulp.series(svgSprite, readyReload))
   gulp.watch('src/styles/**/*.scss', gulp.series(styles, cb => gulp.src('build/css').pipe(server.stream()).on('end', cb)))
   gulp.watch('src/styles/**/*.sass', gulp.series(styles, cb => gulp.src('build/css').pipe(server.stream()).on('end', cb)))
