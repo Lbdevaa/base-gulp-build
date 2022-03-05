@@ -10,6 +10,6 @@ module.exports = function deploy() {
   return src(['build/**/*.*', '!build/**/*.map'])
     .pipe(connect.newer('/test'))
     .pipe(connect.dest('/test'))
-    // .on('success', () => console.log(`Finished deploing ./build to https://${chalk.blueBright(ftpSettings.host)} OLD FILES NO CLEARED`))
-    .on('success', () => console.log(`Finished deploing ./build to server OLD FILES NO CLEARED`))
+    .on('finish', () => console.log(`Finished deploing ./build to https://${chalk.blueBright(ftpSettings.host)} ${chalk.redBright(`OLD FILES NO CLEARED`)}`))
+
 }
