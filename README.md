@@ -9,3 +9,6 @@ https://github.com/browserslist/browserslist#browsers-data-updating
 ##FTP
 Create cfg file gulp\tasks\ftpSettings.json like gulp\tasks\ftpSettings-example.json
 npm run ftp
+
+##Svg Sprite
+Mono use only fill #000

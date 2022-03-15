@@ -12,8 +12,11 @@
 
 // Подключение универсальных блоков
 
-@import "blocks/*";  
+@import "blocks/header",
+  "blocks/footer",
+  "blocks/text-box";
 
 // Каждая страница подключается отдельно и включает в себя уникальные стили, все универсальные блоки подключаем выше
 
-@import "pages/*"; 
+@import "pages/index",
+  "pages/404";
