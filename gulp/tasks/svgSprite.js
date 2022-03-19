@@ -1,6 +1,4 @@
 const gulp = require('gulp')
-// const svgstore = require('gulp-svgstore')
-// const rename = require('gulp-rename')
 const cheerio = require('gulp-cheerio')
 const replace = require('gulp-replace')
 const sprite = require('gulp-svg-sprite')

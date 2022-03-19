@@ -11,7 +11,9 @@ const imageMinify = require('./gulp/tasks/imageMinify')
 const clean = require('./gulp/tasks/clean')
 const copyDependencies = require('./gulp/tasks/copyDependencies')
 const lighthouse = require('./gulp/tasks/lighthouse')
-const svgSprite = require('./gulp/tasks/svgSprite')
+// const svgSprite = require('./gulp/tasks/svgSprite')
+const svgSpriteMono = require('./gulp/tasks/svgSpriteMono')
+const svgSpriteMulti = require('./gulp/tasks/svgSpriteMulti')
 const deploy = require('./gulp/tasks/deploy')
 const webp = require('./gulp/tasks/webp')
 
@@ -22,7 +24,7 @@ function setMode(isProduction = false) {
   }
 }
 
-const dev = gulp.series(gulp.parallel(addHtml, pug2html, styles, script, libs, fonts, imageMinify, svgSprite), webp)
+const dev = gulp.series(gulp.parallel(addHtml, pug2html, styles, script, libs, fonts, imageMinify, svgSpriteMono, svgSpriteMulti), webp)
 
 const build = gulp.series(clean, copyDependencies, dev)
 const prebuild = gulp.parallel(pug2html, styles, script)

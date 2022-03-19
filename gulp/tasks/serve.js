@@ -1,7 +1,9 @@
 const gulp = require('gulp')
 
 const imageMinify = require('./imageMinify')
-const svgSprite = require('./svgSprite')
+// const svgSprite = require('./svgSprite')
+const svgSpriteMono = require('./svgSpriteMono')
+const svgSpriteMulti = require('./svgSpriteMulti')
 const styles = require('./styles')
 const pug2html = require('./pug2html')
 const addHtml = require('./addHtml')
@@ -27,7 +29,9 @@ module.exports = function serve(cb) {
 
   gulp.watch('src/img/*.{gif,png,jpeg,jpg,svg,webp,ico}', gulp.series(imageMinify, readyReload))
   gulp.watch('build/img/**/*.+(png|jpg|jpeg)', gulp.series(webp, readyReload));
-  gulp.watch('src/img/sprite/*.svg', gulp.series(svgSprite, readyReload))
+  // gulp.watch('src/img/sprite/*.svg', gulp.series(svgSprite, readyReload))
+  gulp.watch('src/img/sprite/mono/*.svg', gulp.series(svgSpriteMono, readyReload))
+  gulp.watch('src/img/sprite/multi/*.svg', gulp.series(svgSpriteMulti, readyReload))
   gulp.watch('src/styles/**/*.scss', gulp.series(styles, cb => gulp.src('build/css').pipe(server.stream()).on('end', cb)))
   gulp.watch('src/styles/**/*.sass', gulp.series(styles, cb => gulp.src('build/css').pipe(server.stream()).on('end', cb)))
   gulp.watch('src/styles/**/*.css', gulp.series(styles, cb => gulp.src('build/css').pipe(server.stream()).on('end', cb)))
